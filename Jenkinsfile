@@ -1,5 +1,4 @@
-def TAG_SELECTOR = "UNINTIALIZED"
-def TAG_SELECTORS = "UNINTIALIZED"
+def VERSION = "UNINTIALIZED"
 pipeline {
     agent any
 
@@ -13,11 +12,11 @@ pipeline {
                 sh 'mvn clean install package'
 
              script {
-                    TAG_SELECTOR = readMavenPom().getVersion()
-                    TAG_SELECTORS = readMavenPom().getFinalName()
+                    VERSION = readMavenPom().getVersion()
+                    
                 }
-                echo("TAG_SELECTOR=${TAG_SELECTOR}")
-                echo("TAG_SELECTORS=${TAG_SELECTORS}")
+                echo("VERSION=${VERSION}")
+                
             }
         }
 
