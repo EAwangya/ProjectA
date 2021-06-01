@@ -5,11 +5,6 @@ pipeline {
         tools {
         maven 'maven'
     }
-
-    def pom = readMavenPom file: 'pom.xml'
-        sh 'mvn versions:set-property -Dproperty=some-key -DnewVersion=some-value -DgenerateBackupPoms=false'
-        writeMavenPom model: pom
-
     stages {
         stage('Build') {
             steps {
@@ -36,14 +31,7 @@ pipeline {
                 version: '0.0.3-SNAPSHOT'
             }
         }
-       stage('Print Environmental Variables') {
-            steps {
-                echo "Artifact ID is '${ArtifactId}'"
-                echo "Version is '${Version}'"
-                echo "GroupID is '${GroupId}'"
-                echo "Name is '${Name}'"
-            }
-        } 
+       
         stage('Deploy') {
             steps {
                 echo 'Deploying'
