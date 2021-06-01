@@ -1,16 +1,16 @@
 pipeline {
     agent any
 
-     environment{
-       ArtifactId = readMavenPom().getArtifactId()
-       Version = readMavenPom().getVersion()
-       Name = readMavenPom().getName()
-       GroupId = readMavenPom().getGroupId()
-    }
+
         tools {
         maven 'maven'
     }
-   
+    environment{
+       artifactId = readMavenPom().getartifactId()
+       version = readMavenPom().getversion()
+       name = readMavenPom().getname()
+       groupId = readMavenPom().getgroupId()
+    }
 
     stages {
         stage('Build') {
