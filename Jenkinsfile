@@ -5,12 +5,10 @@ pipeline {
         tools {
         maven 'maven'
     }
-    environment{
-       artifactId = readMavenPom().getartifactId()
-       version = readMavenPom().getversion()
-       name = readMavenPom().getname()
-       groupId = readMavenPom().getgroupId()
-    }
+
+    def pom = readMavenPom file: 'pom.xml'
+        sh 'mvn versions:set-property -Dproperty=some-key -DnewVersion=some-value -DgenerateBackupPoms=false'
+        writeMavenPom model: pom
 
     stages {
         stage('Build') {
