@@ -1,4 +1,5 @@
 def TAG_SELECTOR = "UNINTIALIZED"
+def TAG_SELECTORS = "UNINTIALIZED"
 pipeline {
     agent any
 
@@ -13,8 +14,10 @@ pipeline {
 
              script {
                     TAG_SELECTOR = readMavenPom().getVersion()
+                    TAG_SELECTORS = readMavenPom().getFinalName()
                 }
                 echo("TAG_SELECTOR=${TAG_SELECTOR}")
+                echo("TAG_SELECTORS=${TAG_SELECTORS}")
             }
         }
 
@@ -27,7 +30,7 @@ pipeline {
             steps {
                 nexusArtifactUploader artifacts: [[artifactId: 'ErnestDevOpsLab',
                 classifier: '',
-                file: 'target/ErnestDevOpsLab-'ehco"${TAG_SELECTOR}"'.war',
+                file: 'target/ErnestDevOpsLab-0.0.4-SNAPSHOT.war',
                 type: 'war']],
                 credentialsId: '132a42f4-5f0d-4a6a-84fb-6988a15236bb',
                 groupId: 'com.ernestdevopslab', 
