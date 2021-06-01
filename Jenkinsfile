@@ -33,7 +33,7 @@ pipeline {
             steps {
                 nexusArtifactUploader artifacts: [[artifactId: 'ErnestDevOpsLab',
                 classifier: '',
-                file: 'target/ErnestDevOpsLab-0.0.4-SNAPSHOT.war',
+                file: "target/${ARTIFACTID}-${VERSION}.war",
                 type: 'war']],
                 credentialsId: '132a42f4-5f0d-4a6a-84fb-6988a15236bb',
                 groupId: 'com.ernestdevopslab', 
