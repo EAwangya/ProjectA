@@ -1,4 +1,5 @@
 def VERSION = "UNINTIALIZED"
+def ARTIFACTID = "UNINTIALIZED"
 pipeline {
     agent any
 
@@ -13,9 +14,12 @@ pipeline {
 
              script {
                     VERSION = readMavenPom().getVersion()
+                    ARTIFACTID = readMavenPom().getArtifactId()
                     
                 }
                 echo("VERSION=${VERSION}")
+                echo("ARTIFACTID=${ARTIFACTID}")
+                
                 
             }
         }
