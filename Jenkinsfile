@@ -28,7 +28,7 @@ pipeline {
                 nexusVersion: 'nexus3',
                 protocol: 'http', 
                 repository: 'ErnestDevopsLab-SNAPSHOT',
-                version: '0.0.3-SNAPSHOT'
+                version: '${bamboo.maven.version}'
             }
         }
        
