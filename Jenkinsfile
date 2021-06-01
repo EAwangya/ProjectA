@@ -1,3 +1,4 @@
+def TAG_SELECTOR = "UNINTIALIZED"
 pipeline {
     agent any
 
@@ -9,8 +10,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn clean install package'
+
+             script {
+                    TAG_SELECTOR = readMavenPom().getVersion()
+                }
+                echo("TAG_SELECTOR=${TAG_SELECTOR}")
             }
         }
+
         stage('Test') {
             steps {
                 echo 'Testing ......'
@@ -28,7 +35,7 @@ pipeline {
                 nexusVersion: 'nexus3',
                 protocol: 'http', 
                 repository: 'ErnestDevopsLab-SNAPSHOT',
-                version: '${bamboo.maven.version}'
+                version: '0.0.3-SNAPSHOT'
             }
         }
        
