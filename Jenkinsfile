@@ -1,5 +1,6 @@
 def VERSION = "UNINTIALIZED"
 def ARTIFACTID = "UNINTIALIZED"
+def NexusRepo = Version.endswith("SNAPSHOT") ? "ErnestDevopslab-SNAPSHOT" : "ErnestDevopslab-RELEASE"
 pipeline {
     agent any
 
@@ -31,7 +32,7 @@ pipeline {
         }
         stage('Publish to Nexus') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'ErnestDevOpsLab',
+                nexusArtifactUploader artifacts: [[artifactId: "${ARTIFACTID}",
                 classifier: '',
                 file: "target/${ARTIFACTID}-${VERSION}.war",
                 type: 'war']],
@@ -40,8 +41,8 @@ pipeline {
                 nexusUrl: '54.196.105.192:8081',
                 nexusVersion: 'nexus3',
                 protocol: 'http', 
-                repository: 'ErnestDevopsLab-SNAPSHOT',
-                version: '${TAG_SELECTOR}'
+                repository: "${NexusRepo}",
+                version: "${VERSION}"
             }
         }
        
