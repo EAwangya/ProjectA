@@ -3,12 +3,12 @@ pipeline {
         tools {
         maven 'maven'
     }
-    environment {
+    /*environment {
        ArtifactId = readMavenPom().getArtifactId()
        Version = readMavenPom().getVersion()
        Name = readMavenPom().getName()
        GroupId = readMavenPom().getGroupId()
-    }
+    }*/
 
     stages {
         stage('Build') {
@@ -36,14 +36,14 @@ pipeline {
                 version: '0.0.3-SNAPSHOT'
             }
         }
-        stage('Print Environmental Variables') {
+       /* stage('Print Environmental Variables') {
             steps {
                 echo "Artifact ID is '${ArtifactId}'"
                 echo "Version is '${Version}'"
                 echo "GroupID is '${GroupId}'"
                 echo "Name is '${Name}'"
             }
-        }
+        } */
         stage('Deploy') {
             steps {
                 echo 'Deploying'
