@@ -27,7 +27,7 @@ pipeline {
             steps {
                 nexusArtifactUploader artifacts: [[artifactId: 'ErnestDevOpsLab',
                 classifier: '',
-                file: 'target/ErnestDevOpsLab-${TAG_SELECTOR}.war',
+                file: 'target/ErnestDevOpsLab-'ehco"${TAG_SELECTOR}"'.war',
                 type: 'war']],
                 credentialsId: '132a42f4-5f0d-4a6a-84fb-6988a15236bb',
                 groupId: 'com.ernestdevopslab', 
