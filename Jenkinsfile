@@ -40,7 +40,7 @@ pipeline {
                 type: 'war']],
                 credentialsId: '145106b6-0808-4356-8a63-fef9975b6daf',
                 groupId: 'com.ernestdevopslab', 
-                nexusUrl: '18.215.251.228:8081',
+                nexusUrl: 'http://18.215.251.228:8081',
                 nexusVersion: 'nexus3',
                 protocol: 'http', 
                 repository: "${NexusRepo}",
