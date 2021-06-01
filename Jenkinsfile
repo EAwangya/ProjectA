@@ -33,7 +33,7 @@ pipeline {
         stage('Publish to Nexus') {
             steps {
                 script { 
-                    def NexusRepo = VERSION.endsWith("SNAPSHOT") ? "ErnestDevOpslab-SNAPSHOT" : "ErnestDevOpslab-RELEASE"
+                    def NexusRepo = VERSION.endsWith("SNAPSHOT") ? "ErnestDevOpsLab-SNAPSHOT" : "ErnestDevOpsLab-RELEASE"
                 nexusArtifactUploader artifacts: [[artifactId: "${ARTIFACTID}",
                 classifier: '',
                 file: "target/${ARTIFACTID}-${VERSION}.war",
