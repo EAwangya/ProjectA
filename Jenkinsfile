@@ -38,7 +38,7 @@ pipeline {
                 classifier: '',
                 file: "target/${ARTIFACTID}-${VERSION}.war",
                 type: 'war']],
-                credentialsId: '132a42f4-5f0d-4a6a-84fb-6988a15236bb',
+                credentialsId: '145106b6-0808-4356-8a63-fef9975b6daf',
                 groupId: 'com.ernestdevopslab', 
                 nexusUrl: '18.215.251.228:8081',
                 nexusVersion: 'nexus3',
